@@ -128,7 +128,8 @@ MonoBehaviour:
         m_Items:
         - type:
             m_TypeName: Unity.InteractiveTutorials.PropertyModificationCriterion,
-              Unity.InteractiveTutorials.Core, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+              Unity.InteractiveTutorials.Core, Version=0.0.0.0, Culture=neutral,
+              PublicKeyToken=null
           criterion: {fileID: 114605322033829266}
       m_MaskingSettings:
         m_MaskingEnabled: 1

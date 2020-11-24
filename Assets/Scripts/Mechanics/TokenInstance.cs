@@ -1,3 +1,4 @@
+using System;
 using Platformer.Gameplay;
 using UnityEngine;
 using static Platformer.Core.Simulation;
@@ -34,7 +35,7 @@ namespace Platformer.Mechanics
         {
             _renderer = GetComponent<SpriteRenderer>();
             if (randomAnimationStartTime)
-                frame = Random.Range(0, sprites.Length);
+                frame = UnityEngine.Random.Range(0, sprites.Length);
             sprites = idleAnimation;
         }
 

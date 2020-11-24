@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 namespace Platformer.Core
 {
@@ -54,6 +55,7 @@ namespace Platformer.Core
             {
                 if (Precondition())
                 {
+                    Debug.Log("About to execute");
                     Execute();
                     OnExecute?.Invoke((T)this);
                 }

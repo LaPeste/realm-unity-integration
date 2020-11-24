@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using Platformer.Mechanics;
 using UnityEngine;
+using Realms;
 
 namespace Platformer.Model
 {
@@ -38,5 +40,21 @@ namespace Platformer.Model
         /// </summary>
         public float jumpDeceleration = 0.5f;
 
+        public IList<LevelModel> levels;
+
+        private LevelModel _level;
+        public LevelModel Level => _level;
+
+        private readonly RealmConfigurationBase _realmConfig;
+        public RealmConfigurationBase RealmConfiguration => _realmConfig;
+
+
+        // Start is called before the first frame update
+        public PlatformerModel()
+        {
+            _realmConfig = new RealmConfiguration("./REALM_DB_TEST");
+            //_realmConfig = new InMemoryConfiguration("in_memory_to_throw");
+            _level = new LevelModel();
+        }
     }
 }

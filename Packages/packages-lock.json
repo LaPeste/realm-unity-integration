@@ -181,7 +181,7 @@
       }
     },
     "realm.unity.bundle": {
-      "version": "file:/Users/andrea.catalini/Downloads/realm.unity.bundle-10.0.0-alpha.490.tgz",
+      "version": "file:../realm.unity.bundle-10.0.0-alpha.490.tgz",
       "depth": 0,
       "source": "local-tarball",
       "dependencies": {}

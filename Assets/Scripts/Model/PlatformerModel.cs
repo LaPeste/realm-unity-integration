@@ -2,6 +2,8 @@ using System.Collections.Generic;
 using Platformer.Mechanics;
 using UnityEngine;
 using Realms;
+using System.IO;
+using System;
 
 namespace Platformer.Model
 {
@@ -45,14 +47,29 @@ namespace Platformer.Model
         private LevelModel _level;
         public LevelModel Level => _level;
 
-        private readonly RealmConfigurationBase _realmConfig;
-        public RealmConfigurationBase RealmConfiguration => _realmConfig;
+        //private readonly RealmConfigurationBase _realmConfig;
+        //public RealmConfigurationBase RealmConfiguration => _realmConfig;
 
 
         // Start is called before the first frame update
         public PlatformerModel()
         {
-            _realmConfig = new RealmConfiguration("./REALM_DB_TEST");
+            //Debug.LogWarning($"LocalAppData ==> {Application.persistentDataPath}");
+            //var realmPath = Path.Combine(Application.persistentDataPath, "realm_test_db");
+
+            //#if (UNITY_STANDALONE && UNITY_EDITOR)
+            //            _realmConfig.ConfigWithPath("realm_test_db");
+            //#elif UNITY_ANDROID
+            //            _realmConfig.ConfigWithPath("/storage/emulated/0/Android/data/com.Realm.RealmPluginForUnity/realm_test_db");
+            //#elif UNITY_IOS
+            //            _realmConfig.ConfigWithPath("realm_test_db");
+            //#endif
+            //_realmConfig = new RealmConfiguration(realmPath)
+            //{
+            //    ShouldDeleteIfMigrationNeeded = true
+            //};
+
+
             //_realmConfig = new InMemoryConfiguration("in_memory_to_throw");
             _level = new LevelModel();
         }

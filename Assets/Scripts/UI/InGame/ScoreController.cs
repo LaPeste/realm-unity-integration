@@ -20,17 +20,17 @@ namespace Platformer.UI.InGame
         private void Start()
         {
             textLabel = GetComponent<Text>();
-            var realm = Realm.GetInstance(model.RealmConfiguration);
+            var realm = Realm.GetInstance();
             var levelName = model.Level.Name;
             _levelStats = realm.Find<LevelStats>(levelName);
-            textLabel.text = _levelStats.CollectedTokens.ToString();
-
+            textLabel.text = !(_levelStats is null) ?_levelStats.CollectedTokens.ToString() : 0.ToString();
+            Debug.LogWarning($"RealmDB file at: {RealmConfigurationBase.GetPathToRealm()}");
             _levelStats.PropertyChanged += OnRealmChanged;
         }
 
         private void OnDestroy()
         {
-            var realm = Realm.GetInstance(model.RealmConfiguration);
+            var realm = Realm.GetInstance();
             realm.RealmChanged -= OnRealmChanged;
         }
 
@@ -41,7 +41,7 @@ namespace Platformer.UI.InGame
 
         private void OnRealmChanged(object sender, EventArgs eventArgs)
         {
-            var realm = Realm.GetInstance(model.RealmConfiguration);
+            var realm = Realm.GetInstance();
             var levelName = model.Level.Name;
             textLabel.text = _levelStats.CollectedTokens.ToString();
         }

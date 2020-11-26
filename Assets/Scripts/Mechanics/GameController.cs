@@ -1,6 +1,9 @@
 using Platformer.Core;
 using Platformer.Model;
 using UnityEngine;
+using System;
+using Realms;
+using System.IO;
 
 namespace Platformer.Mechanics
 {
@@ -30,9 +33,25 @@ namespace Platformer.Mechanics
             if (Instance == this) Instance = null;
         }
 
+        private void Awake()
+        {
+            Debug.LogWarning($"LocalAppData ==> {Application.persistentDataPath}");
+            var realmPath = Path.Combine(Application.persistentDataPath, "realm_test_db");
+
+            RealmConfiguration.DefaultConfiguration = new RealmConfiguration(realmPath)
+            {
+                ShouldDeleteIfMigrationNeeded = true
+            };
+        }
+
         void Update()
         {
             if (Instance == this) Simulation.Tick();
+        }
+
+        void OnApplicationQuit()
+        {
+            Debug.LogWarning("Application ending after " + Time.time + " seconds");
         }
     }
 }

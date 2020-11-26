@@ -25,12 +25,12 @@ namespace Platformer.Gameplay
         {
             AudioSource.PlayClipAtPoint(token.tokenCollectAudio, token.transform.position);
 
-            var realm = Realm.GetInstance(model.RealmConfiguration);
+            var realm = Realm.GetInstance();
             var levelName = model.Level.Name;
             var test = realm.All<LevelStats>().ToArray();
             var level = realm.Find<LevelStats>(levelName);
-            Debug.LogWarning($"level is null= {level is null} \nfor Level name = {levelName}");
-            Debug.LogWarning($"Realm DB is stored at {RealmConfigurationBase.GetPathToRealm()}");
+            //Debug.LogWarning($"level is null= {level is null} \nfor Level name = {levelName}");
+            //Debug.LogWarning($"Realm DB is stored at {RealmConfigurationBase.GetPathToRealm()}");
 
             realm.Write(() =>
             {

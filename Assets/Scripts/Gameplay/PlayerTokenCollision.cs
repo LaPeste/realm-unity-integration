@@ -34,15 +34,7 @@ namespace Platformer.Gameplay
 
             realm.Write(() =>
             {
-                if (level is null)
-                {
-                    Debug.LogWarning($"Level was null, create new instance");
-                    level = new LevelStats
-                    {
-                        Name = levelName,
-                    };
-                    realm.Add(level);
-                }
+                // level is never null because added by the <see cref="ScoreController"/>
                 level.CollectedTokens.Increment();
             });
             Debug.LogWarning($"Points = {level.CollectedTokens}");

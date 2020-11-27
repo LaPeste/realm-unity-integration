@@ -23,8 +23,21 @@ namespace Platformer.UI.InGame
             var realm = Realm.GetInstance();
             var levelName = model.Level.Name;
             _levelStats = realm.Find<LevelStats>(levelName);
-            textLabel.text = !(_levelStats is null) ?_levelStats.CollectedTokens.ToString() : 0.ToString();
-            Debug.LogWarning($"RealmDB file at: {RealmConfigurationBase.GetPathToRealm()}");
+            if (_levelStats is null)
+            {
+                realm.Write(() =>
+                {
+                    if (_levelStats is null)
+                    {
+                        _levelStats = new LevelStats
+                        {
+                            Name = levelName,
+                        };
+                        realm.Add(_levelStats);
+                    }
+                });
+            }
+            textLabel.text = _levelStats.CollectedTokens.ToString();
             _levelStats.PropertyChanged += OnRealmChanged;
         }
 

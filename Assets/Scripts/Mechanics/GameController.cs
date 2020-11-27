@@ -1,7 +1,6 @@
 using Platformer.Core;
 using Platformer.Model;
 using UnityEngine;
-using System;
 using Realms;
 using System.IO;
 
@@ -35,8 +34,7 @@ namespace Platformer.Mechanics
 
         private void Awake()
         {
-            Debug.LogWarning($"LocalAppData ==> {Application.persistentDataPath}");
-            var realmPath = Path.Combine(Application.persistentDataPath, "realm_test_db");
+            var realmPath = Path.Combine(Utils.MultiOsUtils.GetWritableOsLocation(), "realm_test_db");
 
             RealmConfiguration.DefaultConfiguration = new RealmConfiguration(realmPath)
             {

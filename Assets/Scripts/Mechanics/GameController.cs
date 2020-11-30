@@ -1,8 +1,7 @@
 using Platformer.Core;
 using Platformer.Model;
+using Platformer.Utils;
 using UnityEngine;
-using Realms;
-using System.IO;
 
 namespace Platformer.Mechanics
 {
@@ -29,22 +28,24 @@ namespace Platformer.Mechanics
 
         void OnDisable()
         {
-            if (Instance == this) Instance = null;
+            if (Instance == this)
+            {
+                Instance = null;
+            }
         }
 
         private void Awake()
         {
-            var realmPath = Path.Combine(Utils.MultiOsUtils.GetWritableOsLocation(), "realm_test_db");
-
-            RealmConfiguration.DefaultConfiguration = new RealmConfiguration(realmPath)
-            {
-                ShouldDeleteIfMigrationNeeded = true
-            };
+            // Putting this here to eagerly set the default database location
+            RealmUtils.Init();
         }
 
         void Update()
         {
-            if (Instance == this) Simulation.Tick();
+            if (Instance == this)
+            {
+                Simulation.Tick();
+            }
         }
 
         void OnApplicationQuit()

@@ -1,5 +1,3 @@
-using System;
-using UnityEngine;
 using Realms;
 
 namespace Platformer.Model.Statistics
@@ -7,21 +5,18 @@ namespace Platformer.Model.Statistics
     public class LevelStats : RealmObject
     {
         [PrimaryKey]
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
-        /// Sum of tokes + killed enemies
-        public int Points { get; set; }
-        public DateTimeOffset BestTimeToEnd { get; set; }
-        
-        // TODO check if to make these 2 below RealmInteger<int> since they are counters
-        public RealmInteger<int> CollectedTokens { get; set; }
-        public RealmInteger<int> DeathsCounter { get; set; }
+        public RealmInteger<int> CollectedTokens { get; private set; }
+        public RealmInteger<int> DeathsCounter { get; private set; }
 
-        public LevelStats()
+        private LevelStats()
         {
-            BestTimeToEnd = new DateTimeOffset();
-            CollectedTokens = DeathsCounter = Points = 0;
+        }
+
+        public LevelStats(string levelName)
+        {
+            Name = levelName;
         }
     }
-    
 }

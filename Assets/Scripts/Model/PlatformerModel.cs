@@ -1,10 +1,7 @@
+using System;
 using System.Collections.Generic;
 using Platformer.Mechanics;
 using UnityEngine;
-using Realms;
-using System.IO;
-using System;
-
 namespace Platformer.Model
 {
     /// <summary>
@@ -12,7 +9,7 @@ namespace Platformer.Model
     /// game. This class should only contain data, and methods that operate 
     /// on the data. It is initialised with data in the GameController class.
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public class PlatformerModel
     {
         /// <summary>
@@ -44,13 +41,12 @@ namespace Platformer.Model
 
         public IList<LevelModel> levels;
 
-        private LevelModel _level;
-        public LevelModel Level => _level;
+        public LevelModel Level { get; }
 
         // Start is called before the first frame update
         public PlatformerModel()
         {
-            _level = new LevelModel();
+            Level = new LevelModel();
         }
     }
 }

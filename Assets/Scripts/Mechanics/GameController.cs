@@ -1,8 +1,7 @@
 using Platformer.Core;
 using Platformer.Model;
+using Platformer.Utils;
 using UnityEngine;
-using Realms;
-using System.IO;
 
 namespace Platformer.Mechanics
 {
@@ -29,27 +28,23 @@ namespace Platformer.Mechanics
 
         void OnDisable()
         {
-            if (Instance == this) Instance = null;
-        }
-
-        private void Awake()
-        {
-            var realmPath = Path.Combine(Utils.MultiOsUtils.GetWritableOsLocation(), "realm_test_db");
-
-            RealmConfiguration.DefaultConfiguration = new RealmConfiguration(realmPath)
+            if (Instance == this)
             {
-                ShouldDeleteIfMigrationNeeded = true
-            };
+                Instance = null;
+            }
         }
 
         void Update()
         {
-            if (Instance == this) Simulation.Tick();
+            if (Instance == this)
+            {
+                Simulation.Tick();
+            }
         }
 
         void OnApplicationQuit()
         {
-            Debug.LogWarning("Application ending after " + Time.time + " seconds");
+            Debug.LogWarning("Application ended after " + Time.time + " seconds");
         }
     }
 }

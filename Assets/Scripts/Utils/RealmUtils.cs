@@ -1,21 +1,10 @@
-﻿using System.IO;
-using Platformer.Model.Statistics;
+﻿using Platformer.Model.Statistics;
 using Realms;
 
 namespace Platformer.Utils
 {
     public static class RealmUtils
     {
-        public static void Init()
-        {
-            var realmPath = Path.Combine(MultiOsUtils.GetWritableOsLocation(), "realm_test_db");
-
-            RealmConfiguration.DefaultConfiguration = new RealmConfiguration(realmPath)
-            {
-                ShouldDeleteIfMigrationNeeded = true
-            };
-        }
-
         public static LevelStats GetOrCreateStats(Realm realm, string levelName)
         {
             var levelStats = realm.Find<LevelStats>(levelName);

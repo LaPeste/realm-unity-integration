@@ -34,12 +34,6 @@ namespace Platformer.Mechanics
             }
         }
 
-        private void Awake()
-        {
-            // Putting this here to eagerly set the default database location
-            RealmUtils.Init();
-        }
-
         void Update()
         {
             if (Instance == this)
@@ -50,7 +44,7 @@ namespace Platformer.Mechanics
 
         void OnApplicationQuit()
         {
-            Debug.LogWarning("Application ending after " + Time.time + " seconds");
+            Debug.LogWarning("Application ended after " + Time.time + " seconds");
         }
     }
 }

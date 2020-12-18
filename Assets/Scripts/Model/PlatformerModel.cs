@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using Platformer.Mechanics;
 using UnityEngine;
+using Realms;
+
 namespace Platformer.Model
 {
     /// <summary>
@@ -43,10 +45,14 @@ namespace Platformer.Model
 
         public LevelModel Level { get; }
 
-        // Start is called before the first frame update
-        public PlatformerModel()
+        //public RealmConfiguration realmConf;
+
+    // Start is called before the first frame update
+    public PlatformerModel()
         {
             Level = new LevelModel();
+            //realmConf = new RealmConfiguration("manualSchema");
+            //realmConf.ObjectClasses = new[] { typeof(Statistics.LevelStats) };
         }
     }
 }

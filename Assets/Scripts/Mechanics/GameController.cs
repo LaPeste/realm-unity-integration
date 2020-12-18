@@ -1,3 +1,4 @@
+using System.Threading;
 using Platformer.Core;
 using Platformer.Model;
 using Platformer.Utils;
@@ -40,11 +41,6 @@ namespace Platformer.Mechanics
             {
                 Simulation.Tick();
             }
-        }
-
-        void OnApplicationQuit()
-        {
-            Debug.LogWarning("Application ended after " + Time.time + " seconds");
         }
     }
 }

@@ -1,6 +1,7 @@
 using Platformer.Core;
 using Platformer.Mechanics;
 using Platformer.Model;
+using UnityEngine;
 
 namespace Platformer.Gameplay
 {
@@ -11,6 +12,7 @@ namespace Platformer.Gameplay
     {
         PlatformerModel model = Simulation.GetModel<PlatformerModel>();
 
+        [RuntimeInitializeOnLoadMethod]
         public override void Execute()
         {
             var player = model.player;

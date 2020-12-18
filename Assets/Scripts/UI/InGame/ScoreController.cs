@@ -21,7 +21,7 @@ namespace Platformer.UI.InGame
 
         private void Start()
         {
-            _realm = Realm.GetInstance();
+            _realm = Realm.GetInstance();// (model.realmConf);
             _textLabel = GetComponent<Text>();
             _levelStats = RealmUtils.GetOrCreateStats(_realm, model.Level.Name);
 

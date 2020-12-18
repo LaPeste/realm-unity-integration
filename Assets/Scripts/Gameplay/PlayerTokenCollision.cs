@@ -22,15 +22,13 @@ namespace Platformer.Gameplay
         {
             AudioSource.PlayClipAtPoint(token.tokenCollectAudio, token.transform.position);
 
-            using (var realm = Realm.GetInstance())
+            using (var realm = Realm.GetInstance())//(model.realmConf))
             {
                 var stats = RealmUtils.GetOrCreateStats(realm, model.Level.Name);
                 realm.Write(() =>
                 {
                     stats.CollectedTokens.Increment();
                 });
-
-                Debug.LogWarning($"Points = {stats.CollectedTokens}");
             }
         }
     }
